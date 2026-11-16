@@ -185,3 +185,12 @@ The identity uses the active-support scaled-plan form. The demo's largest `abs(d
 Bounds match the solver:1..64 weights per side, cost[0,1e6], epsilon[1e-4,1e4], fixed updates1..5000 and active cells times updates<=10million. Cost directions must be finite in[-1e6,1e6]; epsilon direction in[-1e4,1e4]. Zero-weight support is excluded and returned as zero plan/tangent cells. No derivatives of weights, point coordinates, absolute/max residuals, stopping decisions or the rounded output are supplied. Signed directions are formal local perturbations; callers must keep the actual perturbation path within the accepted cost/epsilon domain. Underflow can erase tiny plan entries/tangents, and finite precision/cancellation remain limitations.
 
 Ten added tests cover independent central differences at several update counts for both cost-only and joint directions, a closed-form2x2 derivative, cost-shift invariance, simultaneous cost/epsilon scaling, a nonconverged shortcut counterexample, zero support/underflow/no mutation, permutation, comparison to the independent primal solver at fixed caps, invalid bounds/work and CLI errors. Those earlier 46 tests are retained within the current 65-test suite. The equations are derived from the existing log-domain update algebra; no external differentiation implementation or benchmark is used.
+
+## Check the installed package
+
+`python examples/check_installed.py` builds a fresh wheel and runs all 65 Python
+tests outside the checkout. It checks eight installed module paths before and
+after, compares six complete JSON reports through both CLI entrypoints and
+reproduces both SVGs. All 12 saved marginal controls and their CLI refusals are
+checked too. A separate CI job runs this alongside the existing package checks.
+Building needs pip and setuptools; the installed package has no runtime dependencies.
