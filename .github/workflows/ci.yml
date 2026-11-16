@@ -44,3 +44,11 @@ jobs:
       - run: python -m pip wheel . --no-deps -w /tmp/wheels
       - run: python -m pip install --target /tmp/installed /tmp/wheels/*.whl
       - run: bash examples/verify_marginal_wheel.sh /tmp/installed
+  installed-suite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python examples/check_installed.py
