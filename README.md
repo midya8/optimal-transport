@@ -1,6 +1,6 @@
 # Optimal transport
 
-TransportLab keeps the plan, its marginal errors and the computation that produced it visible. It solves small entropic transport problems, audits a separate rounded plan and dual objective, and traces derivatives through a fixed number of updates. Python uses only the standard library. The browser workbench runs locally without a server.
+This implementation keeps the plan, its marginal errors and the computation that produced it visible. It solves small entropic transport problems, audits a separate rounded plan and dual objective, and traces derivatives through a fixed number of updates. Python uses only the standard library. The browser workbench runs locally without a server.
 
 | Question | Start here | What the result does not establish |
 | --- | --- | --- |
