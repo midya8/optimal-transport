@@ -1,10 +1,10 @@
-# TransportLab
+# Optimal transport
 
 TransportLab keeps the plan, its marginal errors and the computation that produced it visible. It solves small entropic transport problems, audits a separate rounded plan and dual objective, and traces derivatives through a fixed number of updates. Python uses only the standard library. The browser workbench runs locally without a server.
 
 | Question | Start here | What the result does not establish |
 | --- | --- | --- |
-| How does a raw weight edit change a finite solve? | [Normalized-weight workbench](https://midya8.github.io/transportlab/) | A finite-update derivative is not an optimum derivative. Requested and actual marginal tangents can differ. |
+| How does a raw weight edit change a finite solve? | [Normalized-weight workbench](https://midya8.github.io/optimal-transport/) | A finite-update derivative is not an optimum derivative. Requested and actual marginal tangents can differ. |
 | Did a low-cost plan meet its marginals? | [Solver contract](#mathematical-contract) and [separate audit](#separate-primal-and-dual-numerical-audit) | A small objective does not imply feasibility. Floating primal/dual numbers are not certified bounds. |
 | Does a conditional mean preserve transported mass? | [Full atoms and conditional means](#mass-pushforward-versus-mean-map-collapse) | A barycentric mean is not a sample or a mass-preserving replacement for the full coupling. |
 | How do costs and epsilon change a fixed computation? | [Fixed-weight directions](#differentiate-the-computation-not-a-stopping-rule) | No stopping rule, rounding operation or support change is differentiated. |
@@ -15,7 +15,7 @@ The current suite has **65 Python tests and six Node/actual-Chrome tests**. All 
 
 ## Normalized weight directions
 
-[Open the browser workbench](https://midya8.github.io/transportlab/) or read [MARGINALS.md](MARGINALS.md) for the input schema, derivation and limits. The browser normalizes raw source and target weights separately, differentiates that normalization, then follows exactly N row/column updates. Cost and epsilon may move at the same time. Every plan, tangent, marginal, potential and history row remains available, with editable input and a complete JSON download.
+[Open the browser workbench](https://midya8.github.io/optimal-transport/) or read [MARGINALS.md](MARGINALS.md) for the input schema, derivation and limits. The browser normalizes raw source and target weights separately, differentiates that normalization, then follows exactly N row/column updates. Cost and epsilon may move at the same time. Every plan, tangent, marginal, potential and history row remains available, with editable input and a complete JSON download.
 
 One update of the early-weight control has full objective tangent `0.010665526`, while a requested-marginal envelope candidate gives `-0.019162331`. Their difference is accounted for by the actual marginal-tangent residual terms. The candidate is not an optimum derivative merely because it uses potentials. A normalization-only control has nonzero raw directions but zero normalized and plan tangents; null sensitivity does not establish feasibility.
 
